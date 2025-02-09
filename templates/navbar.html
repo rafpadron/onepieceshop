@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block header %}
+
+<header class="bg-white">
+    <div class="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
+      <a class="block text-teal-600" href="#">
+        <span class="sr-only">Home</span>
+        <svg class="h-8" viewBox="0 0 64 64" width="50" height="50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 2C18.745 2 8 12.745 8 26c0 8.837 4.791 16.52 12 20.625V54a4 4 0 004 4h2a2 2 0 002-2v-4h8v4a2 2 0 002 2h2a4 4 0 004-4v-7.375C51.209 42.52 56 34.837 56 26 56 12.745 45.255 2 32 2zm0 4c9.941 0 18 8.059 18 18 0 7.168-3.938 13.375-10 16.625V52h-2v-4a2 2 0 00-2-2h-8a2 2 0 00-2 2v4h-2v-11.375C17.938 37.375 14 31.168 14 24c0-9.941 8.059-18 18-18zm-8 20a4 4 0 110 8 4 4 0 010-8zm16 0a4 4 0 110 8 4 4 0 010-8zm-8 10c2.209 0 4 1.791 4 4s-1.791 4-4 4-4-1.791-4-4 1.791-4 4-4z"/>
+        </svg>
+      </a>
+  
+      <div class="flex flex-1 items-center justify-end md:justify-between">
+        <nav aria-label="Global" class="hidden md:block">
+          <ul class="flex items-center gap-6 text-sm">
+            <li>
+              <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> About </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Careers </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> History </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Services </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Projects </a>
+            </li>
+  
+            <li>
+              <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Blog </a>
+            </li>
+          </ul>
+        </nav>
+  
+        <div class="flex items-center gap-4">
+          <div class="sm:flex sm:gap-4">
+            {% if user.is_authenticated %}
+                <form action="{%url 'logout'%}" method="post">
+                    {% csrf_token %}
+                    <button
+                    class="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-bold text-black transition hover:bg-teal-700"
+                    >
+                    Logout
+                    </button>
+                </form>
+            {% else %}
+                <a
+                class="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-bold text-black transition hover:bg-teal-700"
+                href="{% url 'login' %}"
+                >
+                Login
+                </a>
+            {% endif %}
+          </div>
+  
+          <button
+            class="block rounded-sm bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden"
+          >
+            <span class="sr-only">Toggle menu</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+{% endblock %}
