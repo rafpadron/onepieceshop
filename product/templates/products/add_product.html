@@ -1,15 +1,20 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
 {% block content %}
-{% include 'navbar.html' %}
-<div class="max-w-lg mx-auto mt-10">
-    <h1 class="text-2xl font-bold mb-5">Agregar Producto</h1>
-    <form action="{% url 'add_product' %}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+{% include "navbar.html" %}
+<div class="max-w-4xl mt-6 mx-auto p-6 bg-white rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-4">Agregar Nuevo Producto</h2>
+    
+    <form method="POST" enctype="multipart/form-data" class="space-y-4">
         {% csrf_token %}
-        {{ form.as_p }}
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                Agregar
+        {{ form|crispy }}
+        
+        <div class="flex justify-end mt-6">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                Guardar Producto
             </button>
         </div>
     </form>
 </div>
-{% endblock %}
+{% endblock content %}

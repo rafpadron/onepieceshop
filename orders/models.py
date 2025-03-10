@@ -17,4 +17,4 @@ class OrderProduct(models.Model):
     quantity = models.PositiveIntegerField()
     
     def __str__(self):
-        return f"{self.quantity} of {self.product} in order {self.orden}"
+        return f"{self.quantity} of {self.product} in order {self.order}"
